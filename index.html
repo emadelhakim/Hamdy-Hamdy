@@ -1,1 +1,133 @@
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#102b46">
+<title>سنترال الحكيم | دفتر الأرقام</title>
+<style>
+:root{--navy:#102b46;--blue:#176b87;--gold:#d6ad55;--bg:#f3f6fa;--ink:#172536;--muted:#68788a;--line:#dce4ec;--white:#fff;--green:#16845b;--red:#c44545}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+body{padding:16px}.app{max-width:1180px;margin:auto}
+header{background:linear-gradient(120deg,#102b46,#176b87);color:#fff;border-radius:22px;padding:24px 26px;display:flex;align-items:center;justify-content:space-between;gap:16px;box-shadow:0 12px 30px #102b4620}
+.brand{display:flex;align-items:center;gap:15px}.logo{width:58px;height:58px;border-radius:17px;background:#ffffff1b;border:1px solid #ffffff55;display:grid;place-items:center;font-size:29px}
+h1{font-size:clamp(21px,4vw,30px);margin:0 0 7px}.subtitle{color:#d7e7f1;font-size:13px}.tag{border:1px solid #ffffff55;border-radius:30px;padding:9px 13px;font-size:12px;white-space:nowrap}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+.stat,.panel{background:var(--white);border:1px solid var(--line);border-radius:18px;box-shadow:0 5px 18px #102b4608}
+.stat{padding:17px 19px}.stat .label{font-size:13px;color:var(--muted)}.stat strong{display:block;font-size:27px;margin-top:8px;color:var(--navy);font-variant-numeric:tabular-nums}
+.panel{padding:20px;margin-bottom:18px}.panel-title{font-size:18px;font-weight:bold;color:var(--navy);margin:0 0 17px;display:flex;align-items:center;gap:9px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}label{font-size:13px;font-weight:bold;color:#26394d}
+input,textarea{width:100%;border:1px solid #cbd6e1;border-radius:11px;padding:13px 14px;background:#fff;color:#111;font:16px Tahoma,Arial;outline:none;min-width:0}
+input:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px #176b8718}textarea{min-height:88px;resize:vertical}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+button{border:0;border-radius:11px;padding:12px 17px;font: bold 14px Tahoma;cursor:pointer;transition:.15s}
+button:active{transform:scale(.98)}.primary{background:var(--navy);color:white}.secondary{background:#e8eff5;color:var(--navy)}.gold{background:var(--gold);color:#1d2b38}.danger{background:#fff0f0;color:var(--red)}.small{padding:8px 11px;font-size:12px}
+.toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px}.search{max-width:330px}.tools{display:flex;gap:8px;flex-wrap:wrap}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:13px}
+table{width:100%;border-collapse:collapse;min-width:760px;background:#fff}th,td{padding:13px 12px;text-align:right;border-bottom:1px solid #e8edf2;font-size:13px}th{background:#edf3f7;color:#24394e;font-weight:bold;white-space:nowrap}tbody tr:hover{background:#f8fbfd}td.num{font-variant-numeric:tabular-nums}.empty{text-align:center;padding:30px;color:var(--muted)}
+tfoot td{background:#f1f6f9;font-weight:bold;color:var(--navy);border-top:2px solid #cad8e3}
+.row-actions{display:flex;gap:6px}.footer{text-align:center;color:var(--muted);font-size:12px;padding:10px}
+.notice{font-size:12px;color:var(--muted);margin-top:12px}
+@media(max-width:650px){body{padding:10px}.stats{grid-template-columns:1fr 1fr}.stat:last-child{grid-column:1/-1}header{padding:18px;align-items:flex-start}.tag{display:none}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.panel{padding:15px}.actions button{flex:1}.toolbar{align-items:stretch}.search{max-width:none}.tools button{flex:1}}
+@media print{body{background:#fff;padding:0}.app{max-width:none}header{background:#fff!important;color:#000;box-shadow:none;border:1px solid #aaa}header .subtitle{color:#333}.panel.form-panel,.toolbar,.row-actions,.footer .noprint{display:none!important}.panel,.stat{box-shadow:none;break-inside:avoid}.stats{grid-template-columns:repeat(3,1fr)}table{min-width:0}th,td{font-size:10px;padding:7px}.table-wrap{overflow:visible}.footer{color:#333}}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+ <div class="brand"><div class="logo">📒</div><div><h1>سنترال الحكيم</h1><div class="subtitle">دفتر الأرقام والسجلات — إدارة منظمة وسهلة</div></div></div>
+ <div class="tag">نظام تسجيل مستقل</div>
+</header>
+<section class="stats">
+ <div class="stat"><div class="label">عدد السجلات</div><strong id="count">٠</strong></div>
+ <div class="stat"><div class="label">إجمالي الأرقام</div><strong id="total">٠</strong></div>
+ <div class="stat"><div class="label">آخر تحديث</div><strong id="updated" style="font-size:16px">—</strong></div>
+</section>
+<section class="panel form-panel">
+ <h2 class="panel-title"><span>✚</span><span id="formTitle">إضافة سجل جديد</span></h2>
+ <form id="entryForm">
+  <div class="form-grid">
+   <div class="field"><label for="personName">الاسم</label><input id="personName" type="text" placeholder="اكتب الاسم" autocomplete="name" required></div>
+   <div class="field"><label for="phoneNumber">الرقم</label><input id="phoneNumber" type="number" inputmode="decimal" step="any" placeholder="اكتب الرقم" required></div>
+   <div class="field"><label for="entryDate">التاريخ</label><input id="entryDate" type="date" required></div>
+   <div class="field full"><label for="notes">الملاحظات</label><textarea id="notes" placeholder="اكتب أي ملاحظات (اختياري)"></textarea></div>
+  </div>
+  <div class="actions">
+   <button class="primary" type="submit" id="saveBtn">＋ إضافة إلى الجدول</button>
+   <button class="secondary" type="button" id="cancelEdit" hidden>إلغاء التعديل</button>
+   <button class="secondary" type="reset" id="resetBtn">تفريغ الخانات</button>
+  </div>
+  <div class="notice">يتم حفظ السجلات تلقائياً على هذا الجهاز بعد كل إضافة أو تعديل أو حذف.</div>
+ </form>
+</section>
+<section class="panel">
+ <div class="toolbar">
+  <h2 class="panel-title" style="margin:0">▤ جدول السجلات</h2>
+  <input class="search" id="search" type="search" placeholder="بحث بالاسم أو الرقم أو الملاحظات...">
+  <div class="tools">
+   <button class="secondary" id="exportBtn">تصدير Excel</button>
+   <button class="secondary" id="printBtn">طباعة / PDF</button>
+   <button class="danger" id="clearBtn">مسح الكل</button>
+  </div>
+ </div>
+ <div class="table-wrap">
+  <table>
+   <thead><tr><th>م</th><th>الاسم</th><th>الرقم</th><th>التاريخ</th><th>الملاحظات</th><th class="noprint">الإجراءات</th></tr></thead>
+   <tbody id="tableBody"></tbody>
+   <tfoot><tr><td colspan="2">الإجمالي</td><td id="tableTotal" class="num">٠</td><td colspan="3">عدد السجلات: <span id="tableCount">٠</span></td></tr></tfoot>
+  </table>
+ </div>
+</section>
+<div class="footer">سنترال الحكيم — دفتر الأرقام الاحترافي</div>
+</div>
+<script>
+(()=> {
+ const $=id=>document.getElementById(id);
+ const KEY='central_alhakim_number_book_v1';
+ let records=[], editingId=null;
+ const fmt=n=>Number(n||0).toLocaleString('ar-EG',{maximumFractionDigits:8});
+ const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};
+ function load(){try{const x=JSON.parse(localStorage.getItem(KEY)||'[]');records=Array.isArray(x)?x:[]}catch{records=[]}}
+ function persist(){try{localStorage.setItem(KEY,JSON.stringify(records));$('updated').textContent=new Date().toLocaleTimeString('ar-EG',{hour:'2-digit',minute:'2-digit'})}catch{alert('تعذر الحفظ على هذا الجهاز. تأكد من مساحة التخزين وإعدادات المتصفح.')}}
+ function safe(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+ function render(){
+  const q=$('search').value.trim().toLowerCase();
+  const shown=records.filter(r=>[r.name,r.number,r.date,r.notes].join(' ').toLowerCase().includes(q));
+  $('tableBody').innerHTML=shown.length?shown.map((r,i)=>`<tr>
+   <td>${fmt(i+1)}</td><td>${safe(r.name)}</td><td class="num">${fmt(r.number)}</td><td>${safe(r.date)}</td><td>${safe(r.notes||'—')}</td>
+   <td class="noprint"><div class="row-actions"><button class="secondary small" data-edit="${r.id}">تعديل</button><button class="danger small" data-delete="${r.id}">حذف</button></div></td>
+  </tr>`).join(''):`<tr><td colspan="6" class="empty">لا توجد سجلات لعرضها</td></tr>`;
+  const total=records.reduce((s,r)=>s+(Number(r.number)||0),0);
+  $('count').textContent=fmt(records.length);$('total').textContent=fmt(total);
+  $('tableTotal').textContent=fmt(total);$('tableCount').textContent=fmt(records.length);
+ }
+ function resetForm(){editingId=null;$('entryForm').reset();$('entryDate').value=today();$('formTitle').textContent='إضافة سجل جديد';$('saveBtn').textContent='＋ إضافة إلى الجدول';$('cancelEdit').hidden=true}
+ $('entryDate').value=today();
+ $('entryForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const name=$('personName').value.trim(), number=$('phoneNumber').value, date=$('entryDate').value, notes=$('notes').value.trim();
+  if(!name||number===''||!date)return;
+  const data={name,number:Number(number),date,notes};
+  if(editingId!==null){records=records.map(r=>r.id===editingId?{...r,...data}:r)}else{records.push({id:Date.now()+Math.random(),...data})}
+  persist();render();resetForm();
+ });
+ $('cancelEdit').addEventListener('click',resetForm);$('resetBtn').addEventListener('click',()=>setTimeout(()=>{$('entryDate').value=today()},0));
+ $('search').addEventListener('input',render);
+ $('tableBody').addEventListener('click',e=>{
+  const edit=e.target.closest('[data-edit]'), del=e.target.closest('[data-delete]');
+  if(edit){const r=records.find(x=>String(x.id)===edit.dataset.edit);if(!r)return;editingId=r.id;$('personName').value=r.name;$('phoneNumber').value=r.number;$('entryDate').value=r.date;$('notes').value=r.notes||'';$('formTitle').textContent='تعديل السجل';$('saveBtn').textContent='حفظ التعديلات';$('cancelEdit').hidden=false;window.scrollTo({top:0,behavior:'smooth'})}
+  if(del){const id=del.dataset.delete;if(confirm('هل تريد حذف هذا السجل؟')){records=records.filter(r=>String(r.id)!==id);persist();render();if(String(editingId)===id)resetForm()}}
+ });
+ $('clearBtn').addEventListener('click',()=>{if(records.length&&confirm('تأكيد مسح جميع السجلات؟ لا يمكن التراجع عن هذه الخطوة.')){records=[];persist();render();resetForm()}});
+ $('printBtn').addEventListener('click',()=>window.print());
+ $('exportBtn').addEventListener('click',()=>{
+  const rows=[['م','الاسم','الرقم','التاريخ','الملاحظات'],...records.map((r,i)=>[i+1,r.name,r.number,r.date,r.notes||'']),['','الإجمالي',records.reduce((s,r)=>s+(Number(r.number)||0),0),'عدد السجلات',records.length]];
+  const csv='\uFEFF'+rows.map(row=>row.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='دفتر_ارقام_سنترال_الحكيم.csv';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+ });
+ load();render();
+})();
+</script>
+</body>
+</html>connected
